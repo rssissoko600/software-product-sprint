@@ -33,7 +33,7 @@ $(document).ready(function() {
     $("#email_error").removeClass("hidden");
     valid = false;
   }
-
+//email message
   return valid;
   });
  
