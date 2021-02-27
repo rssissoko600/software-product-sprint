@@ -26,3 +26,14 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+$(document).ready(function() {
+  if ( $("#email").prop("validity").valid ) {
+    $("#email_error").addClass("hidden");
+  } else {
+    $("#email_error").removeClass("hidden");
+    valid = false;
+  }
+
+  return valid;
+  });
+ 
