@@ -13,18 +13,41 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random fun fact to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+// function addRandomFacts() {
+//   const facts =
+//       ['I was apart of a commercial for Black History Month! ', 
+//       'I created my first app on Google Play at 12 years old! ', 
+//       'I love to eat seafood: crab legs, mussels. shrimp, and clams. ', 
+//       'I was born and raised in The Bronx, New York. '];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+//   // Pick a random fact about Rokia.
+//   const fact = facts[Math.floor(Math.random() * facts.length)];
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+//   // Add it to the page.
+//   const factContainer = document.getElementById('fact-container');
+//   factContainer.innerText = facts;
+// }
+async function addRandomFacts(){
+    // const facts =
+    //   ['I was apart of a commercial for Black History Month! ', 
+    //   'I created my first app on Google Play at 12 years old! ', 
+    //   'I love to eat seafood: crab legs, mussels. shrimp, and clams. ', 
+    //   'I was born and raised in The Bronx, New York. '];
+
+    // // Pick a random fact about Rokia.
+    // const fact = facts[Math.floor(Math.random() * facts.length)];
+
+    const responseFromServer = await fetch('/fact');
+    const textFromResponse = await responseFromServer.json();
+
+    const factContainer = document.getElementById('fact-container');
+    factContainer.innerText = "You know have a random fact about me: " + textFromResponse;
+
+    
+    console.log(textFromResponse);
+    console.log(factContainer);
 }
 $(document).ready(function() {
   if ( $("#email").prop("validity").valid ) {
@@ -33,6 +56,7 @@ $(document).ready(function() {
     $("#email_error").removeClass("hidden");
     valid = false;
   }
-
+//email message
   return valid;
   });
+ 
